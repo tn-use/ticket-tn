@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>여기는 여러 가지 기능이 있는 웹사이트 입니다.</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- 홈 화면 -->
+  <div id="home" class="screen active">
+    <h1>여기는 여러 가지 기능이 있는 웹사이트 입니다.</h1>
+    <button onclick="openScreen('tts')">텍스트 읽어주기</button>
+    <button onclick="openScreen('dday')">디데이 계산하기</button>
+    <button onclick="openScreen('ticket')">발권 끊기</button>
+    <button onclick="openScreen('stt')">음성 텍스트 변환</button>
+
+    <footer>
+      <p>티엔 인코퍼레이티드 LTD</p>
+      <a href="tel:01094761267">전화하기</a>
+      <a href="sms:01094761267">메시지 보내기</a>
+    </footer>
+  </div>
+
+  <!-- 텍스트 읽어주기 화면 -->
+  <div id="tts" class="screen">
+    <button onclick="closeScreen()">닫기</button>
+    <h2>텍스트 말하기</h2>
+    <label for="langSelect">언어 선택</label>
+    <select id="langSelect">
+      <option value="ko-KR">한국어</option>
+      <option value="en-US">영어</option>
+      <option value="ja-JP">일본어</option>
+      <option value="zh-CN">중국어</option>
+    </select>
+    <input type="text" id="ttsInput" placeholder="원하는 텍스트 입력">
+    <button onclick="speakText()">확인</button>
+    <button onclick="resetTTS()">초기화</button>
+    <audio id="ttsPlayer" controls></audio>
+  </div>
+
+  <!-- 디데이 계산기 -->
+  <div id="dday" class="screen">
+    <button onclick="closeScreen()">닫기</button>
+    <h2>디데이 계산</h2>
+    <input type="number" id="yearInput" placeholder="년">
+    <input type="number" id="monthInput" placeholder="월">
+    <input type="number" id="dayInput" placeholder="일">
+    <button onclick="calcDDay()">확인</button>
+    <button id="resetDDay" onclick="resetDDay()" disabled>초기화</button>
+    <div id="ddayResult"></div>
+  </div>
+
+  <!-- 발권 끊기 -->
+  <div id="ticket" class="screen">
+    <button onclick="closeScreen()">닫기</button>
+    <h2>티엔 현장 발권</h2>
+    <button onclick="generateTicket()">끊기</button>
+    <button>사용</button>
+    <div id="ticketResult"></div>
+    <p id="ticketGuide">직원에게 숫자를 보여 주세요.</p>
+  </div>
+
+  <!-- 음성 텍스트 변환 -->
+  <div id="stt" class="screen">
+    <button onclick="closeScreen()">닫기</button>
+    <h2>음성을 입력하여 텍스트로 바꿀 수 있습니다.</h2>
+    <button onclick="startSTT()">음성 입력</button>
+    <p id="sttResult"></p>
+    <button onclick="copySTT()">복사</button>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
